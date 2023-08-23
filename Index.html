@@ -2,8 +2,6 @@
 <html>
 <head>
   <title>Página de Prueba</title>
-  <script src="http://localhost:8080/lib_html/jsPDF-master/dist/jspdf.umd.min.js"></script>
-
 </head>
 
 <body>
@@ -23,22 +21,12 @@ window.onload = function() {
   const contenidoDiv = document.getElementById('contenido');
   contenidoDiv.innerHTML = texto1 + "<br>" + texto2 + "<br>" + texto3;
 
-  const boton = document.createElement('button');
-  boton.textContent = 'Generar PDF';
-  boton.addEventListener('click', generarPDF);
-  document.body.appendChild(boton);
-
-  function generarPDF() {
-    const doc = new jsPDF();
-    doc.text(texto1, 10, 10);
-    doc.text(texto2, 10, 20);
-    doc.text(texto3, 10, 30);
-    doc.save('contenido.pdf');
-  }
-
 }
 
 </script>
 
+<button>Mi Botón</button>
+
 </body>
+
 </html>
