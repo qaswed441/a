@@ -3,12 +3,36 @@
 <head>
   <title>Página de Prueba</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      background-image: url('logo.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    #contenido {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
 
 <div id="contenido">
-  <img src="logo.jpg" alt="Logo">
+  <p id="texto1"></p>
+  <p id="texto2"></p>
+  <p id="texto3"></p>
 </div>
 
 <script>
@@ -19,21 +43,24 @@ window.onload = function() {
   const texto3 = urlParams.get('t3');  
 
   const contenidoDiv = document.getElementById('contenido');
-  contenidoDiv.innerHTML = texto1 + "<br>" + texto2 + "<br>" + texto3;
+  const texto1Element = document.getElementById('texto1');
+  const texto2Element = document.getElementById('texto2');
+  const texto3Element = document.getElementById('texto3');
+
+  texto1Element.textContent = texto1;
+  texto2Element.textContent = texto2;
+  texto3Element.textContent = texto3;
 
   const boton = document.createElement('button');
   boton.textContent = 'Generar PDF';
   boton.addEventListener('click', generarPDF);
-  document.body.appendChild(boton);
+  contenidoDiv.appendChild(boton);
 
   function generarPDF() {
     const doc = new jsPDF();
-    const contenido = contenidoDiv.innerHTML;
-    
-    // Agrega el contenido al PDF
-    doc.text(contenido, 10, 10);
-
-    // Guarda el PDF con un nombre
+    doc.text(texto1, 10, 10);
+    doc.text(texto2, 10, 20);
+    doc.text(texto3, 10, 30);
     doc.save('contenido.pdf');
   }
 }
