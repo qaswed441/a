@@ -52,7 +52,7 @@ window.onload = function() {
   texto3Element.textContent = texto3;
 
   const boton = document.createElement('button');
-  boton.textContent = 'Generar PDF';
+  boton.textContent = 'Generar_2 PDF';
   boton.addEventListener('click', generarPDF);
   contenidoDiv.appendChild(boton);
 
@@ -61,7 +61,7 @@ window.onload = function() {
     doc.text(texto1, 10, 10);
     doc.text(texto2, 10, 20);
     doc.text(texto3, 10, 30);
-    doc.save('contenido_2.pdf');
+    doc.save('contenido.pdf');
   }
 }
 </script>
