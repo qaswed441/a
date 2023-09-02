@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generar PDF</title>
+</head>
+<body>
+
+  <button id="generate">Generar PDF</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+  <script>
+
+    // Obtenemos los parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const text1 = urlParams.get('t1'); 
+    const text2 = urlParams.get('t2');
+    const text3 = urlParams.get('t3');
+
+    // Mostramos los textos por pantalla
+    document.write(`<p>${text1}</p>`);
+    document.write(`<p>${text2}</p>`);
+    document.write(`<p>${text3}</p>`);
+
+    const button = document.getElementById('generate');
+    button.addEventListener('click', () => {
+      const doc = new jsPDF();
+
+      doc.text(text1, 10, 10);
+      doc.text(text2, 10, 20);
+      doc.text(text3, 10, 30);
+      doc.addImage('images/logo.jpg', 'JPEG', 15, 40, 180, 180);
+      
+      doc.save('mi-archivo.pdf');
+    })
+
+  </script>
+
+</body>
+</html>
