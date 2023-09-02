@@ -1,70 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Página de Prueba</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-  <style>
-    body {
-      background-image: url('logo.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-    #contenido {
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 20px;
-      max-width: 600px;
-      margin: 20px auto;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-  </style>
+  <title>Generar PDF</title>
 </head>
-
 <body>
 
-<div id="contenido">
-  <p id="texto1"></p>
-  <p id="texto2"></p>
-  <p id="texto3"></p>
-</div>
+  <button id="generate">Generar PDF</button>
 
-<script>
-window.onload = function() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const texto1 = urlParams.get('t1');
-  const texto2 = urlParams.get('t2');
-  const texto3 = urlParams.get('t3');  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+  <script>
 
-  const contenidoDiv = document.getElementById('contenido');
-  const texto1Element = document.getElementById('texto1');
-  const texto2Element = document.getElementById('texto2');
-  const texto3Element = document.getElementById('texto3');
+    // Obtenemos los parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
 
-  texto1Element.textContent = texto1;
-  texto2Element.textContent = texto2;
-  texto3Element.textContent = texto3;
+    const text1 = urlParams.get('t1'); 
+    const text2 = urlParams.get('t2');
+    const text3 = urlParams.get('t3');
 
-  const boton = document.createElement('button');
-  boton.textContent = 'Generar_2 PDF';
-  boton.addEventListener('click', generarPDF);
-  contenidoDiv.appendChild(boton);
+    // Mostramos los textos por pantalla
+    document.write(`<p>${text1}</p>`);
+    document.write(`<p>${text2}</p>`);
+    document.write(`<p>${text3}</p>`);
 
-  function generarPDF() {
-    const doc = new jsPDF();
-    doc.text(texto1, 10, 10);
-    doc.text(texto2, 10, 20);
-    doc.text(texto3, 10, 30);
-    doc.save('contenido.pdf');
-  }
-}
-</script>
+    const button = document.getElementById('generate');
+    button.addEventListener('click', () => {
+      const doc = new jsPDF();
+
+      doc.text(text1, 10, 10);
+      doc.text(text2, 10, 20);
+      doc.text(text3, 10, 30);
+      
+      doc.save('mi-archivo.pdf');
+    })
+
+  </script>
 
 </body>
 </html>
