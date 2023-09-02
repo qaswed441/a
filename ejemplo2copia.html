@@ -10,7 +10,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
   <script>
 
-    // Obtenemos los par·metros de la URL
+    // Obtenemos los par√°metros de la URL
     const urlParams = new URLSearchParams(window.location.search);
 
     const text1 = urlParams.get('t1'); 
@@ -29,7 +29,7 @@
       doc.text(text1, 10, 10);
       doc.text(text2, 10, 20);
       doc.text(text3, 10, 30);
-      doc.addImage('images/logo.jpg', 'JPEG', 15, 40, 180, 180);
+     doc.addImage("images/Octonyan.jpg", "JPEG", 15, 40, 180, 180);
       
       doc.save('mi-archivo.pdf');
     })
