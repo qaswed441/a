@@ -16,6 +16,8 @@
     const text1 = urlParams.get('t1'); 
     const text2 = urlParams.get('t2');
     const text3 = urlParams.get('t3');
+/* Estilos para smartphones */
+document.write(`<meta name="viewport" content="width=480">`);
 
     // Mostramos los textos por pantalla
     document.write(`<p>${text1}</p>`);
@@ -24,7 +26,12 @@
 
     const button = document.getElementById('generate');
     button.addEventListener('click', () => {
-      const doc = new jsPDF();
+            // Definir un tamaño de página personalizado para visualización en smartphones
+      const doc = new jsPDF({
+        orientation: 'portrait',  // Orientación vertical
+        unit: 'mm',               // Unidades en milímetros
+        format: [400, 640],       // Tamaño personalizado (ancho x alto)
+ });
 
       doc.text(text1, 10, 10);
       doc.text(text2, 10, 20);
